@@ -1,0 +1,10 @@
+.main__body__wrapper {
+    margin-left: 230px;
+    transition: 0.25s ease-in-out all;
+    padding: 62px 15px 2em 15px;
+    margin-bottom: 1.5em;
+  
+    @media (max-width: 767.9px) {
+      padding: 0 15px 25px 15px;
+    }
+  }

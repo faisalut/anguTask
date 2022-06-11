@@ -1,0 +1,10 @@
+// Colors used for website
+
+$primary-color:#202343;
+$secondary-color:#B6D0E2;
+
+:root {
+    //=====> app colors
+    --primary-color: #{$primary-color};
+    --secondary-color: #{$secondary-color};
+}

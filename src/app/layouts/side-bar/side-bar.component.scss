@@ -1,0 +1,120 @@
+@import '../../../assets/styles/colors.scss';
+@import '../../../assets/styles/fonts.scss';
+
+
+.side_bar_wrapper{
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    bottom: 0;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+    width: 200px;
+    height: 100vh;
+    background: linear-gradient(to top,#080f4a, var(--primary-color));
+    padding: 15px;
+    transition: 0.2s ease-in-out all; 
+
+    .profile-section{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid white;
+
+        img{
+                height: 50px;
+                width: 50px;
+                border-radius: 50%;
+                border: 2px solid white;
+        }
+        .view{
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+
+            .name{
+                color: white;
+                font-size: 16px;
+            }
+
+            .action{
+                font-size: 12px;
+                color: gray;
+                font-family: sans-serif;
+
+                &:hover{
+                    color: #d0d0d0;
+                    cursor: pointer;
+                }
+            }
+        }
+    
+    }
+}
+
+.single_group {
+    margin-top: 20px;
+    .sub_head {
+      color: white;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      margin: 0;   
+      margin-bottom: 3px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      svg{
+        height: 14px;
+        width: 14px;
+        fill: white;
+      }
+    }
+
+    &:not(:nth-child(1)) {
+      margin-top: 20px;
+    }
+
+    .main_lists {
+        padding-inline-start: 0px;
+        margin-block-start: 0.5em;
+        margin-block-end: 0.5em;
+
+      .list {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        cursor: pointer;
+        padding: 15px;
+        transition: 0.2s linear all;
+        border-radius: 5px;
+
+        &:hover,
+        &.active {
+          background: #eeeeee2b;
+        }
+      }
+
+      .active{
+        background: #eeeeee2b;
+
+      }
+
+      .link {
+        color: white;
+        font-size: 12.5px;
+        display: flex;
+        align-items: center;
+        letter-spacing: 0.3px;
+      }
+
+      .inner-div{
+        height: 20px;
+        width: 20px;
+        
+      }
+    }
+  }

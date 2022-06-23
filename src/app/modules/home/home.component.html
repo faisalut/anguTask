@@ -1,7 +1,4 @@
 <div class="main_wrap" *ngIf="selectedCountry!==1">
-    <div class="top-section">
-        <p>Country info</p>
-    </div>
     <div class="content-wrap">
         <div class="title">
             <p>{{selectedCountry.country_name}}</p>
@@ -10,7 +7,7 @@
         </div>
         <div class="city-title">
             <div>
-                <p>Cities</p>
+                <p>Cities in {{' '+selectedCountry.country_name}}</p>
             </div>
             <div class="search-section">
                 <input [value]="searchTerm" (change)="getSerch($event)" class="input_style">
@@ -27,6 +24,7 @@
         </div>
         <div *ngIf="searchCities.length !=0" class="searched-city">
             <div class="city" *ngFor="let item of searchCities">
+             <div class="location">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
                     id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;"
                     xml:space="preserve">
@@ -65,10 +63,56 @@
                     <g>
                     </g>
                 </svg>
-                <p>{{item.city}}</p>
+                <label>{{item.city}}</label>                          
+              </div>
+              <div>
+                <div (click)="getWeatherReport(item.city)" class="view_whaether">
+                   <label>View Wheather</label>
+                </div>
+              </div>
             </div>
 
         </div>
+        <div *ngIf="weatherData">
+            <p>Waether Deatails</p>
+            <div class="weather">
+             <div class="left"> 
+                <h3>Current Weather  <span>{{'('+weatherData.current_observation.condition.text+')'}}</span></h3>
+               <diV class="celcias">
+                  <h1>{{getCelcias(weatherData.current_observation.condition.temperature)}}
+                    <span class="celsias">c</span>
+                  </h1>
+                 
+               </diV>
+
+               <div class="footer">
+                <div class="sun">
+                    <p>{{'Sun rise : '+weatherData.current_observation.astronomy.sunrise}}</p>
+                    <p>{{'Sun set : '+weatherData.current_observation.astronomy.sunset}}</p>
+                  </div>
+                  <div class="location">
+                    <p>{{weatherData.location.city}}</p>
+                    <p>{{weatherData.location.country}}</p>
+                  </div>
+               </div>
+             </div>
+             <div class="right">
+                <div>
+                    Previos Days
+                </div>
+                <div class="content">
+                    <div class="weekly" *ngFor="let item of weatherData.forecasts">
+                        <label>{{item.day}}</label>
+                        <h3>{{getCelcias((item.high+item.low)/2)}}<span class="celsias2">c</span></h3>
+                        <p [title]="item.text">{{item.text}}</p>
+                    </div>
+                </div>
+             </div>
+            </div>
+            
+
+        </div>
+
         <div *ngIf="isLoad" class="loader">
             <div class="lds-ellipsis">
                 <div></div>

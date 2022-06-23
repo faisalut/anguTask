@@ -27,11 +27,11 @@
         .city-title {
             display: flex;
             align-items: center;
-            gap: 50px;
+            justify-content: space-between;
 
             p {
                 color: var(--primary-color);
-                font-size: 18px;
+                font-size: 15px;
                 font-weight: 600;
             }
 
@@ -52,11 +52,15 @@
                     cursor: pointer;
 
                     svg {
-                        height: 21px;
-                        width: 21px;
+                        height: 15px;
+                        width: 15px;
                         fill: white;
+                        
                     }
 
+                    &:hover{
+                        transform: scale(1.05);
+                    }
                 }
 
                 .input_style {
@@ -70,7 +74,7 @@
                     font-size: 15px;
                     height: 24px;
                     background-clip: padding-box;
-                    border: 1px solid gray;
+                    border: 1px solid #eaeaea;
                     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
                     border-radius: 4px;
                     font-family: gray;
@@ -111,23 +115,71 @@
     flex-wrap: wrap;
     gap: 20px;
 
+
+   
+
+
+
     .city {
         width: 160px;
-        display: flex;
-        align-items: center;
-        gap: 5px;
+        position: relative;
+        border: 1px solid #9cbac2;
         padding: 5px;
-        box-shadow: 1px 1px 7px 0px #b2b2b2;
         border-radius: 5px;
+        overflow: hidden;
 
-        svg {
-            height: 25px;
-            width: 25px;
+        &::before {
+
+            content: "";
+            position: absolute;
+            /* right: 33px; */
+            right: 0;
+            background: url('../../../assets/images/bottom_wave.png') no-repeat right bottom;
+            width: 120px;
+            height: 60px;
+            top: 0px;
+            background-size: 120px;
+
         }
 
-        p {
-            color: var(--primary-color);
-            font-size: 14px;
+        &:hover{
+            transform: scale(1.05);
+        }
+
+        .location {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            position: relative;
+            z-index: 10;
+
+
+            svg {
+                height: 16px;
+                width: 16px;
+            }
+
+            label {
+                color: var(--primary-color);
+                font-size: 14px;
+            }
+        }
+
+        .view_whaether {
+            display: flex;
+            justify-content: flex-end;
+            padding-top: 15px;
+            position: relative;
+
+            label {
+                font-size: 11px;
+                color: gray;
+
+                &:hover{
+                    color: black;
+                    cursor: pointer;
+                }
+            }
         }
     }
 }
@@ -149,6 +201,72 @@
     text-align: center;
     margin-top: 50px;
 }
+
+    
+.weather{
+    padding: 34px 27px 22px;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 1px 1px 20px #00000026;
+    border-left: 5px solid #b4e7f8;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+
+    .left{
+        width: 30rem;
+        padding-right: 12px;
+        label{
+            font-size: 10px;
+            margin: 0;
+            font-family: 'Roboto';
+        }
+    
+        .footer{
+            border-top  : 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+    
+        }
+    }
+
+    .right{
+        .content{
+        padding: 10px;
+        display: flex;
+        .weekly{
+          padding: 2px;
+          width: 72px;
+          p{
+            margin: 0;
+    font-size: 12px;
+    width: 54px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+          }
+        }
+    }
+   }
+    
+}
+
+.celsias{
+    position: relative;
+    left: -18px;
+    font-size: 16px;
+    font-weight: 300;
+}
+.celsias2{
+    position: relative;
+    left: -7px;
+    font-size: 11px;
+    font-weight: 300;
+}
+
+
+
+
 
 // Anim,ation
 

@@ -13,11 +13,16 @@ export class HomeService {
   
 
   ROOT_URL = environment.rootUrl;
+  ROOT_URL2 = environment.rootUrl2;
   constructor(private http: HttpClient) { }
 
   // GET API FOR CITY SEARCH
   getCities(page:number,limit:number,code:String,search:any): Observable<any> {
     return this.http.get<any>(`${this.ROOT_URL}/locations/cities/${search}?page=${page}&limit=${limit}&countryIsoCode=${code}`);
+  }
+
+  getWeather(city:String): Observable<any> {
+    return this.http.get<any>(`${this.ROOT_URL2}?location=${city}&format=json&u='f'`);
   }
 
 

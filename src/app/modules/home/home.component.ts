@@ -10,11 +10,12 @@ import { HomeService } from 'src/app/shared/services/home.service';
 })
 export class HomeComponent implements OnInit,OnDestroy {
 
-  subscription:Subscription[] =[];
+  subscription:Subscription[] = [];
   selectedCountry:any;
   searchCities:any[]=[];
   searchTerm = 'a';  // BECAUSE NULL GET ERROR IN SERACH API
   isLoad =false;
+  weatherData:any;
 
   constructor(
     private homeService:HomeService,
@@ -46,7 +47,7 @@ export class HomeComponent implements OnInit,OnDestroy {
   getCities(val:String){
     this.isLoad =true;
     this.subscription.push(
-      this.homeService.getCities(1,20,val,'a').subscribe(
+      this.homeService.getCities(1,18,val,'a').subscribe(
         res=>{
           this.isLoad =false;
           console.log(res);   
@@ -61,7 +62,7 @@ export class HomeComponent implements OnInit,OnDestroy {
     this.searchCities =[];
     this.isLoad =true;
     this.subscription.push(
-      this.homeService.getCities(1,20,'IN',env.target.value).subscribe(
+      this.homeService.getCities(1,18,this.selectedCountry.country_iso_code,env.target.value).subscribe(
         res=>{
           this.isLoad =false;
           console.log(res);   
@@ -69,6 +70,19 @@ export class HomeComponent implements OnInit,OnDestroy {
         }
       )
     )
+  }
+
+  getWeatherReport(city:string){
+    this.subscription.push(this.homeService.getWeather(city)
+    .subscribe(res=>{
+      this.weatherData = res;
+      console.log(res);    
+    }))
+  }
+
+  getCelcias(num:any)
+  {
+    return String(Math.round((num - 32)*(5/9)))+'°';
   }
   
   ngOnDestroy(): void {
